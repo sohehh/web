@@ -1,0 +1,38 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 700 !important;
+    background-color: #000;
+}
+
+.modal-dialog {
+    width:70% !important;
+    margin: 128px auto !important;
+    z-index: 1000 !important;
+}
+
+.modal-body div{
+    width: 80%;
+    margin:0 auto;
+    /* overflow-y: scroll;
+    height:600px; */
+}
+.modal-body div img{
+    width: 100%;
+}
+
+#myModal4 .modal-body div{
+    width: 500px !important;
+
+}
+
+/*말풍선 위아래 움직임*/
+.icon1 {animation: motion 0.5s linear 0s infinite alternate; margin-top: 0;}
+        
+@keyframes motion {
+	0% {margin-top: 0px;}
+	100% {margin-top: 10px;}
+}

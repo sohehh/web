@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        .progressbar {
+            display: inline-block;
+            width: 520px;
+            height: 21px;
+            background-color: #d6d3d3;
+            border-radius: 10px;
+        }
+
+        .progressbar > .gauge {
+            display: inline-block;
+            width:10%;
+            height: 21px;
+            background-color: #3abff7;
+            border-radius: 10px;
+            transition: 1s linear;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('.gauge').each(function () {
+                var $this = $(this);
+                var per = $this.attr('per');
+                // $(this).hover(function(){
+                //     $(this).animate({width:per + "%"});
+                // },function(){
+
+                // });
+                $this.animate({
+                    width: per + "%"
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <span class="progressbar">
+        <span class="gauge" per="50">
+            gauge
+        </span>
+    </span>
+</body>
+</html>
