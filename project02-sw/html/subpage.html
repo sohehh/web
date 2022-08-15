@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <script src="../js/jquery-1.8.1.min.js"></script>
+    <script src="../js/swipe.js"></script>
+    <script src="../js/swiper.min.js"></script>
+
+    <script>
+        $( document ).ready( function() {
+          $( '.toggle' ).click( function() {
+            $( '.toggle-list' ).css('display','block');
+            
+          } );
+        } );
+    </script>
+    <script>
+        $( document ).ready( function() {
+          $( '.toggle-x' ).click( function() {
+            $( '.toggle-list' ).css('display','none');
+            
+          } );
+        } );
+    </script>
+    <script>
+        $( document ).ready( function() {
+            $('.header-bottom-left li:first-child').toggle(function() {
+            
+            $('.sub-menu').css('display','block');
+            
+            }, function() {
+                
+                $('.sub-menu').css('display','none');
+                
+            
+             });
+        } );
+    </script>
+    <script>
+        $(function(){
+            var m=$('.toggle-sub-menu>li>a');
+
+            m.each(function(){
+                $(this).click(function(){
+                    $(this).next().slideToggle(200)
+                    .parent().siblings().find('div:visible').slideUp(400);
+                });
+            });
+        });
+        // $( document ).ready( function() {
+        //     $('.toggle-sub-menu-bt').toggle(function() {
+            
+        //     $(this).parent().next().children().slideDown( 400 );
+            
+        //     }, function() {
+                
+        //         $(this).parent().next().children().slideUp( 400 );
+                
+            
+        //      });
+        // } );
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('button').hover(function(){
+                $(this).css({
+                    'font-family':'NanumEB',
+                    'color':'black'
+                });
+            },function(){
+                $(this).css({
+                    'background':'#00a0e9',
+                    'color':'white'
+                });
+            });
+            
+        });
+    </script>
+    
+</head>
+<body id="subpage1">
+    <header id="header-wrap">
+        <div id="header-main">
+            <nav id="header-top" >
+                <ul >
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-toggle">
+                <a href="#" class="toggle">
+                    <img src="../img/list.svg" alt="리스트 버튼 이미지">
+                </a>
+                <p>
+                    <a href="subpage2.html"><img src="../img/handbag.svg" alt="장바구니 이미지"> </a>
+                </p>
+            </div>
+            <div class="toggle-list">
+                <p><a href="#" class="toggle-x"><img src="../img/x-lg.svg" alt="닫기 토글 이미지" width="25"></a></p>
+                <p class="wc">
+                    Welcome
+                </p>
+                <p class="login-p">로그인을 하시면 더 많은 혜택을<br> 받으실 수 있습니다.</p>
+                <ul class="cate-login">
+                    <li><a class="login" href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                </ul>
+                <ul class="toggle-list-top">
+                    <li><a href="#"><img src="../img/rocket.png" width="15" alt="로켓배송">&nbsp;<i style="color:#57a9d8;">로켓배송</i></a></li>
+                    <li><a href="#"><img src="../img/rocket-fresh.png" width="15" alt="로켓배송">&nbsp;<i style="color:#3faf43;">로켓프레시</i></a></li>
+                    <li><a href="#"><img src="../img/rocket-overseas.png" width="15" alt="로켓배송">&nbsp;<i style="color:#77409e;">로켓직구</i></a></li>
+                </ul>
+                
+                <ul class="toggle-sub-menu">
+                    <li>
+                        <a href="#"><img src="../img/category-4.svg" alt="식품">
+                            <span>식품</span>
+                            <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음">
+                        </a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">채소</a></li>
+                                <li><a href="#">과일</a></li>
+                                <li><a href="#">육류</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../img/category-5.svg" alt="주방용품"><span>주방용품</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">주방가전</a></li>
+                                <li><a href="#">냄비/프라이펜</a></li>
+                                <li><a href="#">주방조리도구</a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+                    <li><a href="#"><img src="../img/category-6.svg" alt="생활용품"><span>생활용품</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">헤어/바디/세안</a></li>
+                                <li><a href="#">구강/면도</a></li>
+                                <li><a href="#">화장실/물티슈</a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+                    <li><a href="#"><img src="../img/category-7.svg" alt="가전디지털"><span>가전디지털</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">TV</a></li>
+                                <li><a href="#">냉장고/세탁기</a></li>
+                                <li><a href="#">건조기</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-8.svg" alt="뷰티"><span>뷰티</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">스킨케어</a></li>
+                                <li><a href="#">클렌징</a></li>
+                                <li><a href="#">향수</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-9.svg" alt="가구인테리어"><span>가구인테리어</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">홈데코</a></li>
+                                <li><a href="#">가구</a></li>
+                                <li><a href="#">침구</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-10.svg" alt="패션"><span>패션</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">여성패션</a></li>
+                                <li><a href="#">남성패션</a></li>
+                                <li><a href="#">유아동패션</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-11.svg" alt="출산/유아용품"><span>출산/유아용품</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">기저귀</a></li>
+                                <li><a href="#">물티슈</a></li>
+                                <li><a href="#">분유</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-12.svg" alt="완구/취미"><span>완구/취미</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">역할놀이</a></li>
+                                <li><a href="#">블록놀이</a></li>
+                                <li><a href="#">인형</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-13.svg" alt="스포츠/레저"><span>스포츠/레저</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">골프</a></li>
+                                <li><a href="#">자전거</a></li>
+                                <li><a href="#">낚시</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="header-middle">
+                <h1>
+                    <img onClick="location.href='main.html'" src="../img/logo.png" alt="쿠팡로고">
+                </h1>
+                <form id="sform" name="sform" method="post">
+                    <fieldset>
+                        <legend class="skip">검색</legend>
+                        <label class="skip" for="sbox">검색어 입력</label>
+                        <input type="search" id="sbox" class="tbox"
+                        placeholder="검색어 입력"> 
+                    </fieldset>
+                </form>
+                <nav id="header-middle-Bt">
+                    <ul>
+                        <li>
+                            <a href="#"><img src="../img/header-middle-Bt1.svg"  alt="나의 정보"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../img/header-middle-Bt2.svg"  alt="찜"></a>
+                        </li>
+                        <li>
+                            <a href="subpage2.html"><img src="../img/header-middle-Bt3.svg"  alt="장바구니"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <nav id="header-bottom">
+                <ul class="header-bottom-left">
+                    <li>
+                        <a href="#">
+                            <img src="../img/header-bottom-category.svg" width="43" alt="카테고리">
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="#"><img src="../img/category-4.svg" alt="식품">식품</a></li>
+                            <li><a href="#"><img src="../img/category-5.svg" alt="주방용품">주방용품</a></li>
+                            <li><a href="#"><img src="../img/category-6.svg" alt="생활용품">생활용품</a></li>
+                            <li><a href="#"><img src="../img/category-7.svg" alt="가전디지털">가전디지털</a></li>
+                            <li><a href="#"><img src="../img/category-8.svg" alt="뷰티">뷰티</a></li>
+                            <li><a href="#"><img src="../img/category-9.svg" alt="가구인테리어">가구인테리어</a></li>
+                            <li><a href="#"><img src="../img/category-10.svg" alt="패션">패션</a></li>
+                            <li><a href="#"><img src="../img/category-11.svg" alt="출산/유아용품">출산/유아용품</a></li>
+                            <li><a href="#"><img src="../img/category-12.svg" alt="완구/취미">완구/취미</a></li>
+                            <li><a href="#"><img src="../img/category-13.svg" alt="스포츠/레저">스포츠/레저</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/rocket.png" width="20" alt="로켓배송"> 
+                            <i style="color:#57a9d8;">로켓배송</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/rocket-fresh.png" width="20" alt="로켓프레시">
+                            <i style="color:#3faf43">로켓프레시</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/rocket-overseas.png" width="20" alt="로켓직구">
+                            <i style="color:#77409e;">로켓직구</i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="header-bottom-right">
+                    <li>
+                        <a href="#">로켓와우 멤버십</a>
+                    </li>
+                    <li>
+                        <a href="#">베스트</a>
+                    </li>
+                    <li>
+                        <a href="#">이벤트/쿠폰</a>
+                    </li>
+                    <li>
+                        <a href="#">기획전</a>
+                    </li>
+                    <li>
+                        <a href="#">여행/티켓</a>
+                    </li>
+                </ul>
+            </nav>
+            <nav id="header-bottom2">
+                <div class="swiper-container-navi">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/rocket.png" width="20" alt="로켓배송"> 
+                                <i style="color:#57a9d8;">로켓배송</i>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/rocket-fresh.png" width="20" alt="로켓프레시">
+                                <i style="color:#3faf43">로켓프레시</i>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/rocket-overseas.png" width="20" alt="로켓직구">
+                                <i style="color:#77409e;">로켓직구</i>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="subpage.html">로켓와우 멤버십</a>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">베스트</a>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">이벤트/쿠폰</a>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">기획전</a>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">여행/티켓</a>
+                        </div>
+                    </div>
+                    <!-- Add Pagination -->
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id="membership">
+        <div id="membership-inner">
+            <div class="arti-style">
+                <h2>
+                    <img src='../img/rocket-wow.png' alt="로켓와우이미지">
+                    <span>로켓와우 멤버십</span>
+                </h2>
+            </div>
+            <div class="mb-content">
+                <div class="mb-content-p">
+                    <p><img src='../img/rocket-wow.png' alt="로켓와우이미지"></p>
+                    <p class="wow-text">와우 멤버십</p>
+                    <p class="wow-text2">월 4,990원으로 8가지 혜택을 누리세요!</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!--멤버십 end-->
+    <section id="membership-benefit">
+        <div class="membership-inner">
+            <div class="arti-style">
+                <h2>
+                    멤버십혜택
+                </h2>
+            </div>
+            <div class="mbh-content">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span><img src="../img/mem-img1.png" alt="무료배송이미지"></span>
+                            <span>로켓 배송 상품<br> 하나만 사도 무료 배송</span>
+                            <span><img class="arrow" src="../img/sub_arrow.svg" alt="화살표이미지"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span><img src="../img/rocket-fresh.png" alt="로켓프레시이미지"></span>
+                            <span>로켓 프레시<br> 신선식품 장보기</span>
+                            <span><img class="arrow" src="../img/sub_arrow.svg" alt="화살표이미지"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span><img src="../img/mem-img3.svg" alt="아침트럭이미지"></span>
+                            <span>낮시간 주문 새벽 도착</span>
+                            <span><img class="arrow" src="../img/sub_arrow.svg" alt="화살표이미지"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span><img src="../img/mem-img4.svg" alt="저녁트럭이미지"></span>
+                            <span>아침 주문 새벽 도착</span>
+                            <span><img class="arrow" src="../img/sub_arrow.svg" alt="화살표이미지"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span><img src="../img/rocket-overseas.png" alt="로켓직구이미지"></span>
+                            <span>로켓 직구 무조건 무료 배송</span>
+                            <span><img class="arrow" src="../img/sub_arrow.svg" alt="화살표이미지"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span><img src="../img/mem-img6.png" alt="무료반품이미지"></span>
+                            <span>로켓 배송 상품 30일 무료 반품</span>
+                            <span><img class="arrow" src="../img/sub_arrow.svg" alt="화살표이미지"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span><img src="../img/mem-img7.svg" alt="캐시적립이미지"></span>
+                            <span>첫 30일 최대 5% 캐시 적립</span>
+                            <span><img class="arrow" src="../img/sub_arrow.svg" alt="화살표이미지"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <span><img src="../img/mem-img8.svg" alt="쿠팡플레이이미지"></span>
+                            <span>쿠팡 플레이로 영화,드라마 시청</span>
+                            <span><img class="arrow" src="../img/sub_arrow.svg" alt="화살표이미지"></span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+    </section>
+    <section id="cp-content">
+        <div class="arti-style2">
+            <h2>
+                와우 회원이라면 누구나<br>
+                <span>쿠팡플레이</span>로 드라마, 예능, 영화 무제한 시청
+            </h2>
+        </div>
+        
+        <div class="video-container">
+            <div class="jetpack-video-wrapper">
+                <span class="embed-youtube" style="text-align:center; display: block;">
+                    <iframe class="youtube-player" src="https://www.youtube.com/embed/Y4YhXAWzkBg?autoplay=1&mute=1" data-ratio="0.5625" data-width="560" data-height="315">
+                    </iframe>
+                </span>
+            </div>
+        </div>
+    </section>
+    <section id="rocket-wow-member">
+        <div class="arti-style2">
+            <h2>로켓 와우회원은<br>매달 약 <span>14,000원</span> 절약 중!</h2>
+        </div>
+        <div class="wow-member-content">
+            <ul>
+                <li>
+                    <span class="left">로켓배송 상품 무료배송</span>
+                    <span class="right">건당 3,000원</span>
+                </li>
+                <li>
+                    <span class="left">30일 무료 반품</span>
+                    <span class="right">건당 5,000원</span>
+                </li>
+                <li>
+                    <span class="left">로켓직구 무료배송</span>
+                    <span class="right">건당 2,500원</span>
+                </li>
+                <li>
+                    <span class="left">회원 전용 추가 할인</span>
+                    <span class="right">월 평균 약 6,000원</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div id="member-sign">
+        <button type="button">지금 바로 멤버십 가입하기 ></button>
+    </div>
+    <footer>
+        <div id="footer-inner">
+            <ul id="footer-left">
+                <li class="f-call">
+                
+                        <h3>
+                            1644-7202
+                        </h3>
+                        <p>
+                            365고객센터<br>
+                            오전 7시 - 오후 7시
+                        </p>
+                        
+                    
+                </li>
+                <li class="f-kakao">
+                    
+                        <h3>
+                            카카오톡 문의
+                        </h3>
+                        <p>
+                            365고객센터<br>
+                            오전 7시 - 오후 7시
+                        </p>
+                    
+                </li>
+                <li class="f-qna">
+                    
+                        <h3>
+                            1:1 문의
+                        </h3>
+                        <p>
+                            24시간 접수가능<br>
+                            고객센터 운영시간에 순차적으로 답변해드리겠습니다.
+                        </p>
+                        
+                  
+                </li>
+                <li class="f-bulkorder">
+                  
+                        <h3>
+                            대량주문 문의
+                        </h3>
+                        <p>
+                            비회원의 경우 메일로 문의 바랍니다. 
+                        </p>
+                  
+                </li>
+
+            </ul>
+
+            <div id="footer-center">
+                <ul class="footer-m-top">
+                    <li>쿠팡소개</li>
+                    <li>쿠팡소개영상</li>
+                    <li>인재채용</li>
+                    <li>이용약관</li>
+                    <li>개인정보방침</li>
+                    <li>이용안내</li>
+                    <li>문의</li>
+                </ul>
+                <p class="footer-p">
+                    상호명 및 호스팅 서비스 제공 : 쿠팡(주)<br>
+                    대표이사 : 강현승, 박대준<br>
+                    서울시 송파구 송파대로 570<br>
+                    사업자 등록번호 : 20-88-00767<br>
+                    통신판매업신고 : 2017-서울송파-0680<br>
+                    사업자정보 확인 >
+                </p>
+                <div class="footer-div-m">
+                    <p>1644-7202</p>
+                    
+                    상호명 및 호스팅 서비스 제공 : 쿠팡(주)<br>
+                    대표이사 : 강현승, 박대준<br>
+                    서울시 송파구 송파대로 570<br>
+                    사업자 등록번호 : 20-88-00767<br>
+                    통신판매업신고 : 2017-서울송파-0680<br>
+                    사업자정보 확인 >
+                </div>
+            </div>
+            <div id="footer-right">
+                <img src="../img/logo.png" alt="로고이미지">
+            </div>
+        </div>
+    </footer>
+    <script>
+        var swiper = new Swiper('.swiper-container-navi', {
+            pagination: '.swiper-pagination',
+            slidesPerView: 4,
+            paginationClickable: true,
+            spaceBetween:10,
+            freeMode: true,
+            speed:560,
+            breakpoints: {
+            '1197': {
+            slidesPerView: 8,
+            spaceBetween: 10,
+            },
+            '935': {
+            slidesPerView: 7,
+            spaceBetween: 10,
+            },
+            '811': {
+            slidesPerView: 6,
+            spaceBetween: 10,
+            },
+            '353': {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            },
+            '410': {
+            slidesPerView: 3.5,
+            spaceBetween: 10,
+            },
+            '520': {
+            slidesPerView: 4,
+            spaceBetween: 10,
+            },
+            '620': {
+            slidesPerView: 5,
+            spaceBetween: 10,
+            },
+            '650': {
+            slidesPerView: 6,
+            spaceBetween: 10,
+            },
+        }
+        });//플러그인
+    </script>
+</body>
+</html>

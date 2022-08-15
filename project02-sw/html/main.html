@@ -1,0 +1,2657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <!-- <link rel="stylesheet" href="../css/sw.css"> -->
+    
+    <script src="../js/jquery-1.8.1.min.js"></script>
+    <!-- <script src="../js/jsSwipe.js"></script> -->
+    <script src="../js/swipe.js"></script>
+    <script src="../js/swiper.min.js"></script>
+
+    <!--토글 제이쿼리-->
+    <script>
+        $( document ).ready( function() {
+          $( '.toggle' ).click( function() {
+            $( '.toggle-list' ).css('display','block');
+            
+          } );
+        } );
+    </script>
+    <script>
+        $( document ).ready( function() {
+          $( '.toggle-x' ).click( function() {
+            $( '.toggle-list' ).css('display','none');
+            
+          } );
+        } );
+    </script>
+    <script>
+        $( document ).ready( function() {
+            $('.header-bottom-left li:first-child').toggle(function() {
+            
+            $('.sub-menu').css('display','block');
+            
+            }, function() {
+                
+                $('.sub-menu').css('display','none');
+                
+            
+             });
+        } );
+    </script>
+    
+    <!--밑에 전부 다슬라이드 제이쿼리-->
+    <script>
+        $(function(){
+            var m=$('.toggle-sub-menu>li>a');
+
+            m.each(function(){
+                $(this).click(function(){
+                    $(this).next().slideToggle(200)
+                    .parent().siblings().find('div:visible').slideUp(400);
+                });
+            });
+        });
+        // $( document ).ready( function() {
+        //     $('.toggle-sub-menu-bt').toggle(function() {
+            
+        //     $(this).parent().next().children().slideDown( 400 );
+            
+        //     }, function() {
+                
+        //         $(this).parent().next().children().slideUp( 400 );
+                
+            
+        //      });
+        // } );
+    </script>
+    
+    <script>
+        // $(function() {
+        //     var x = 0;
+        //     var tabx = 0;
+        //     var xx = 0;
+        //     var li_width=0;
+        //     for(i=1; i<9; i++){
+        //         li_width+=$(".header-bottom-list2 li:nth-child("+i+")").width();
+        //         console.log(li_width);
+        //     }
+            
+        //     var limit = li_width - $(".header-bottom-frame").width();
+        //     $(".header-bottom-list2").bind('touchstart', function(e) {
+        //         var event = e.originalEvent;
+        //         x = event.touches[0].screenX;
+        //         tabx = $(".header-bottom-list2").css("transform").replace(/[^0-9\-.,]/g, '').split(',')[4];
+        //     });
+        //     $(".header-bottom-list2").bind('touchmove', function(e) {
+        //         var event = e.originalEvent;
+        //         xx = parseInt(tabx) + parseInt(event.touches[0].screenX - x);
+        //         $(".header-bottom-list2").css("transform", "translate(" + xx + "px, 0px)");
+        //         event.preventDefault();
+        //     });
+        //     $(".header-bottom-list2").bind('touchend', function(e) {
+        //         if ((xx > 0) && (tabx <= 0)) {
+        //         $(".header-bottom-list2").css("transform", "translate(0px, 0px)");
+        //         }
+        //         if (Math.abs(xx) > limit) {
+        //         $(".header-bottom-list2").css("transform", "translate(" + -limit + "px, 0px)");
+        //         }
+        //     });
+
+        // });
+    </script>
+    <!--연관상품추천 제이쿼리-->
+    <script>
+        $(function(){
+            //첫번째 항목
+            var $bannNum=0;
+
+            /*next btn를 클릭할때 이동*/
+            $('#recommend .next').click(function(e){
+                e.preventDefault();
+                if($bannNum>=4){return false;}
+                $bannNum++;
+                console.log($bannNum);
+                var $book_w = $('#recommend div>ul>li').outerWidth(true);
+                $('#recommend-inner .layout-frame').animate({'left':-$book_w*$bannNum},400,function(){
+                    
+                    // .attr( attributeName, value )
+                });
+                console.log($book_w);
+            });
+
+            /*prev btn를 클릭할때: $bannNum--(1씩 감소하기) 1003px만큼 이동*/
+            $('#recommend .prev').click(function(e){
+                e.preventDefault();
+                if($bannNum<=0)return false;
+                $bannNum--;
+                console.log($bannNum);
+                var $book_w = $('#recommend div>ul>li').outerWidth(true);
+                $('#recommend-inner .layout-frame').animate({'left':-$book_w*$bannNum},400,function(){
+                    
+                    // .attr( attributeName, value )
+                });
+            
+            });
+
+            // var x = 0;
+            // var tabx = 0;
+            // var xx = 0;
+            // var limit = (($("#recommend-inner .layout-frame ul li").outerWidth(true)*7)+$("#recommend-inner .layout-frame ul li").outerWidth()) - $("#recommend").width();
+            
+            // $("#recommend-inner .layout-frame").bind('touchstart', function(e) {
+            //     var event = e.originalEvent;
+            //     x = event.touches[0].screenX;
+            //     tabx = $("#recommend-inner .layout-frame").css("transform").replace(/[^0-9\-.,]/g, '').split(',')[4];
+            // });
+            // $("#recommend-inner .layout-frame").bind('touchmove', function(e) {
+            //     var event = e.originalEvent;
+            //     xx = parseInt(tabx) + parseInt(event.touches[0].screenX - x);
+            //     $("#recommend-inner .layout-frame").css("transform", "translate(" + xx + "px, 0px)");
+            //     event.preventDefault();
+            // });
+            // $("#recommend-inner .layout-frame").bind('touchend', function(e) {
+            //     if ((xx > 0) && (tabx <= 0)) {
+            //     $("#recommend-inner .layout-frame").css("transform", "translate(0px, 0px)");
+            //     }
+            //     if (Math.abs(xx) > limit) {
+            //     $("#recommend-inner .layout-frame").css("transform", "translate(" + -limit + "px, 0px)");
+            //     }
+            // });
+
+        });
+    </script>
+    <!--특가상품 제이쿼리-->
+    <script>
+        $(function(){
+            var $bannNum=0;
+
+            $('#sale-product .next').click(function(e){
+                e.preventDefault();
+                if($bannNum>=4){return false;}
+                $bannNum++;
+                console.log($bannNum);
+                var $book_w = $('#sale-product div>ul>li').outerWidth(true);
+                $('#sale-product .layout-frame').animate({'left':-$book_w*$bannNum},400,function(){
+                    
+                });
+                console.log($book_w);
+            });
+
+            $('#sale-product .prev').click(function(e){
+                e.preventDefault();
+                if($bannNum<=0)return false;
+                $bannNum--;
+                console.log($bannNum);
+                var $book_w = $('#sale-product div>ul>li').outerWidth(true);
+                $('#sale-product .layout-frame').animate({'left':-$book_w*$bannNum},400,function(){
+                    
+                });
+            
+            });
+            
+        });
+    </script>
+    <!--후기 5000개 돌파 제이쿼리-->
+    <script>
+        $(function(){
+            //두번째 항목
+            var $bannNum=0;
+
+            $('#review .next').click(function(e){
+                e.preventDefault();
+                if($bannNum>=4){return false;}
+                $bannNum++;
+                console.log($bannNum);
+                var $book_w = $('#review div>ul>li').outerWidth(true);
+                $('#review .layout-frame').animate({'left':-$book_w*$bannNum},400,function(){
+                    
+                    // .attr( attributeName, value )
+                });
+                console.log($book_w);
+            });
+
+            $('#review .prev').click(function(e){
+                e.preventDefault();
+                if($bannNum<=0)return false;
+                $bannNum--;
+                console.log($bannNum);
+                var $book_w = $('#review div>ul>li').outerWidth(true);
+                $('#review .layout-frame').animate({'left':-$book_w*$bannNum},400,function(){
+                    
+                    // .attr( attributeName, value )
+                });
+            
+            });
+
+            // var x = 0;
+            // var tabx = 0;
+            // var xx = 0;
+            // var limit = (($("#review-inner .layout-frame ul li").outerWidth(true)*7)+$("#review-inner .layout-frame ul li").outerWidth()) - $("#review").width();
+            
+            // $("#review-inner .layout-frame").bind('touchstart', function(e) {
+            //     var event = e.originalEvent;
+            //     x = event.touches[0].screenX;
+            //     tabx = $("#review-inner .layout-frame").css("transform").replace(/[^0-9\-.,]/g, '').split(',')[4];
+            // });
+            // $("#review-inner .layout-frame").bind('touchmove', function(e) {
+            //     var event = e.originalEvent;
+            //     xx = parseInt(tabx) + parseInt(event.touches[0].screenX - x);
+            //     $("#review-inner .layout-frame").css("transform", "translate(" + xx + "px, 0px)");
+            //     event.preventDefault();
+            // });
+            // $("#review-inner .layout-frame").bind('touchend', function(e) {
+            //     if ((xx > 0) && (tabx <= 0)) {
+            //     $("#review-inner .layout-frame").css("transform", "translate(0px, 0px)");
+            //     }
+            //     if (Math.abs(xx) > limit) {
+            //     $("#review-inner .layout-frame").css("transform", "translate(" + -limit + "px, 0px)");
+            //     }
+            // });
+        });
+    </script>
+    <!--선물 제이쿼리-->
+    <script>
+        $(function(){
+            //두번째 항목
+            var $bannNum=0;
+
+            $('#present .next').click(function(e){
+                e.preventDefault();
+                if($bannNum>=4){return false;}
+                $bannNum++;
+                console.log($bannNum);
+                var $book_w = $('.present-inner div.layout-frame>ul>li').outerWidth(true);
+                $('.present-inner .layout-frame').animate({'left':-$book_w*$bannNum},400,function(){
+                    
+                    // .attr( attributeName, value )
+                });
+                console.log($book_w);
+            });
+
+            $('#present .prev').click(function(e){
+                e.preventDefault();
+                if($bannNum<=0)return false;
+                $bannNum--;
+                console.log($bannNum);
+                var $book_w = $('.present-inner div.layout-frame>ul>li').outerWidth(true);
+                $('.present-inner .layout-frame').animate({'left':-$book_w*$bannNum},400,function(){
+                    
+                    // .attr( attributeName, value )
+                });
+
+            });
+
+            // var x = 0;
+            // var tabx = 0;
+            // var xx = 0;
+            // var limit = (($("#present-inner .layout-frame ul li").outerWidth(true)*7)+$("#present-inner .layout-frame ul li").outerWidth()) - $("#present").width();
+            
+            // $("#present-inner .layout-frame").bind('touchstart', function(e) {
+            //     var event = e.originalEvent;
+            //     x = event.touches[0].screenX;
+            //     tabx = $("#present-inner .layout-frame").css("transform").replace(/[^0-9\-.,]/g, '').split(',')[4];
+            // });
+            // $("#present-inner .layout-frame").bind('touchmove', function(e) {
+            //     var event = e.originalEvent;
+            //     xx = parseInt(tabx) + parseInt(event.touches[0].screenX - x);
+            //     $("#present-inner .layout-frame").css("transform", "translate(" + xx + "px, 0px)");
+            //     event.preventDefault();
+            // });
+            // $("#present-inner .layout-frame").bind('touchend', function(e) {
+            //     if ((xx > 0) && (tabx <= 0)) {
+            //     $("#present-inner .layout-frame").css("transform", "translate(0px, 0px)");
+            //     }
+            //     if (Math.abs(xx) > limit) {
+            //     $("#present-inner .layout-frame").css("transform", "translate(" + -limit + "px, 0px)");
+            //     }
+            // });
+        });
+    </script>
+    <!--핫 브랜드 제이쿼리-->
+    <!-- <script>
+        $(function() {
+            var x = 0;
+            var tabx = 0;
+            var xx = 0;
+            var limit = (($("#hot-brand-m .layout-frame ul li").outerWidth(true)*4)+$("#hot-brand-m .layout-frame ul li").outerWidth()) - $("#hot-brand-m").width();
+            
+            $("#hot-brand-m .layout-frame").bind('touchstart', function(e) {
+                var event = e.originalEvent;
+                x = event.touches[0].screenX;
+                tabx = $("#hot-brand-m .layout-frame").css("transform").replace(/[^0-9\-.,]/g, '').split(',')[4];
+            });
+            $("#hot-brand-m .layout-frame").bind('touchmove', function(e) {
+                var event = e.originalEvent;
+                xx = parseInt(tabx) + parseInt(event.touches[0].screenX - x);
+                $("#hot-brand-m .layout-frame").css("transform", "translate(" + xx + "px, 0px)");
+                event.preventDefault();
+            });
+            $("#hot-brand-m .layout-frame").bind('touchend', function(e) {
+                if ((xx > 0) && (tabx <= 0)) {
+                $("#hot-brand-m .layout-frame").css("transform", "translate(0px, 0px)");
+                }
+                if (Math.abs(xx) > limit) {
+                $("#hot-brand-m .layout-frame").css("transform", "translate(" + -limit + "px, 0px)");
+                }
+            });
+
+            });
+    </script> -->
+    <!--스와이프 컨테이너 제이쿼리-->
+    
+
+</head>
+<body id="mainPage">
+    <!--헤더-->
+    <header id="header-wrap">
+        <div id="header-main">
+            <nav id="header-top" >
+                <ul >
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-toggle">
+                <a href="#" class="toggle">
+                    <img src="../img/list.svg" alt="리스트 버튼 이미지">
+                </a>
+                <p>
+                    <a href="subpage2.html"><img src="../img/handbag.svg" alt="장바구니 이미지"> </a>
+                </p>
+            </div>
+            <div class="toggle-list">
+                <p><a href="#" class="toggle-x"><img src="../img/x-lg.svg"  alt="닫기토글 이미지" width="25"></a></p>
+                <p class="wc">
+                    Welcome
+                </p>
+                <p class="login-p">로그인을 하시면 더 많은 혜택을<br> 받으실 수 있습니다.</p>
+                <ul class="cate-login">
+                    <li><a class="login" href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                </ul>
+                <ul class="toggle-list-top">
+                    <li><a href="#"><img src="../img/rocket.png" width="15" alt="로켓배송">&nbsp;<i style="color:#57a9d8;">로켓배송</i></a></li>
+                    <li><a href="#"><img src="../img/rocket-fresh.png" width="15" alt="로켓배송">&nbsp;<i style="color:#3faf43;">로켓프레시</i></a></li>
+                    <li><a href="#"><img src="../img/rocket-overseas.png" width="15" alt="로켓배송">&nbsp;<i style="color:#77409e;">로켓직구</i></a></li>
+                </ul>
+                
+                <ul class="toggle-sub-menu">
+                    <li>
+                        <a href="#"><img src="../img/category-4.svg" alt="식품">
+                            <span>식품</span>
+                            <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음">
+                        </a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">채소</a></li>
+                                <li><a href="#">과일</a></li>
+                                <li><a href="#">육류</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../img/category-5.svg" alt="주방용품"><span>주방용품</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">주방가전</a></li>
+                                <li><a href="#">냄비/프라이펜</a></li>
+                                <li><a href="#">주방조리도구</a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+                    <li><a href="#"><img src="../img/category-6.svg" alt="생활용품"><span>생활용품</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">헤어/바디/세안</a></li>
+                                <li><a href="#">구강/면도</a></li>
+                                <li><a href="#">화장실/물티슈</a></li>
+                            </ul>
+                        </div>
+                    </li>
+    
+                    <li><a href="#"><img src="../img/category-7.svg" alt="가전디지털"><span>가전디지털</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">TV</a></li>
+                                <li><a href="#">냉장고/세탁기</a></li>
+                                <li><a href="#">건조기</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-8.svg" alt="뷰티"><span>뷰티</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">스킨케어</a></li>
+                                <li><a href="#">클렌징</a></li>
+                                <li><a href="#">향수</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-9.svg" alt="가구인테리어"><span>가구인테리어</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">홈데코</a></li>
+                                <li><a href="#">가구</a></li>
+                                <li><a href="#">침구</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-10.svg" alt="패션"><span>패션</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">여성패션</a></li>
+                                <li><a href="#">남성패션</a></li>
+                                <li><a href="#">유아동패션</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-11.svg" alt="출산/유아용품"><span>출산/유아용품</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">기저귀</a></li>
+                                <li><a href="#">물티슈</a></li>
+                                <li><a href="#">분유</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-12.svg" alt="완구/취미"><span>완구/취미</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">역할놀이</a></li>
+                                <li><a href="#">블록놀이</a></li>
+                                <li><a href="#">인형</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="../img/category-13.svg" alt="스포츠/레저"><span>스포츠/레저</span>
+                        <img class="toggle-sub-menu-bt" src="../img/chevron-down.svg" alt="다음"></a>
+                        <div class="toggle-sub-wrap">
+                            <ul class="toggle-sub-menu2">
+                                <li><a href="#">골프</a></li>
+                                <li><a href="#">자전거</a></li>
+                                <li><a href="#">낚시</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="header-middle">
+                <h1>
+                    <img  onClick="location.href='main.html'" src="../img/logo.png" alt="쿠팡로고">
+                </h1>
+                <form id="sform" name="sform" method="post">
+                    <fieldset>
+                        <legend class="skip">검색</legend>
+                        <label class="skip" for="sbox">검색어 입력</label>
+                        <input type="search" id="sbox" class="tbox"
+                        placeholder="검색어 입력"> 
+                    </fieldset>
+                </form>
+                <nav id="header-middle-Bt">
+                    <ul>
+                        <li>
+                            <a href="#"><img src="../img/header-middle-Bt1.svg"  alt="나의 정보"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../img/header-middle-Bt2.svg"  alt="찜"></a>
+                        </li>
+                        <li>
+                            <a href="subpage2.html"><img src="../img/header-middle-Bt3.svg"  alt="장바구니"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <nav id="header-bottom">
+                <ul class="header-bottom-left">
+                    <li>
+                        <a href="#">
+                            <img src="../img/header-bottom-category.svg" width="43" alt="카테고리">
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="#"><img src="../img/category-4.svg" alt="식품">식품</a></li>
+                            <li><a href="#"><img src="../img/category-5.svg" alt="주방용품">주방용품</a></li>
+                            <li><a href="#"><img src="../img/category-6.svg" alt="생활용품">생활용품</a></li>
+                            <li><a href="#"><img src="../img/category-7.svg" alt="가전디지털">가전디지털</a></li>
+                            <li><a href="#"><img src="../img/category-8.svg" alt="뷰티">뷰티</a></li>
+                            <li><a href="#"><img src="../img/category-9.svg" alt="가구인테리어">가구인테리어</a></li>
+                            <li><a href="#"><img src="../img/category-10.svg" alt="패션">패션</a></li>
+                            <li><a href="#"><img src="../img/category-11.svg" alt="출산/유아용품">출산/유아용품</a></li>
+                            <li><a href="#"><img src="../img/category-12.svg" alt="완구/취미">완구/취미</a></li>
+                            <li><a href="#"><img src="../img/category-13.svg" alt="스포츠/레저">스포츠/레저</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/rocket.png" width="20" alt="로켓배송"> 
+                            <i style="color:#57a9d8;">로켓배송</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/rocket-fresh.png" width="20" alt="로켓프레시">
+                            <i style="color:#3faf43">로켓프레시</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/rocket-overseas.png" width="20" alt="로켓직구">
+                            <i style="color:#77409e;">로켓직구</i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="header-bottom-right">
+                    <li>
+                        <a href="subpage.html">로켓와우 멤버십</a>
+                    </li>
+                    <li>
+                        <a href="#">베스트</a>
+                    </li>
+                    <li>
+                        <a href="#">이벤트/쿠폰</a>
+                    </li>
+                    <li>
+                        <a href="#">기획전</a>
+                    </li>
+                    <li>
+                        <a href="#">여행/티켓</a>
+                    </li>
+                </ul>
+            </nav>
+            <nav id="header-bottom2">
+                <div class="swiper-container-navi">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/rocket.png" width="20" alt="로켓배송"> 
+                                <i style="color:#57a9d8;">로켓배송</i>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/rocket-fresh.png" width="20" alt="로켓프레시">
+                                <i style="color:#3faf43">로켓프레시</i>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/rocket-overseas.png" width="20" alt="로켓직구">
+                                <i style="color:#77409e;">로켓직구</i>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="subpage.html">로켓와우 멤버십</a>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">베스트</a>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">이벤트/쿠폰</a>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">기획전</a>
+
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">여행/티켓</a>
+                        </div>
+                    </div>
+                    <!-- Add Pagination -->
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--메인 배너-->
+    <div id="main-banner">
+        <div>
+            <p>
+                상품을 빠르고,<br>
+                신선하게 받아보고 싶다면<br>
+                지금 바로 로켓프레시를 이용해보세요!
+            </p>
+        </div>
+    </div>
+    <!--메인 배너 밑에 카테고리 큰 메뉴-->
+    <div id="category-big-menu" class="layout2  menu">
+        <ul>
+            <li>
+                <a href="#">
+                    <img src="../img/category-1.svg"  alt="로켓배송">
+                    
+                </a>
+                <a href="#"><span>로켓배송</span></a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <img src="../img/category-2.svg"  alt="로켓프레시">
+                    
+                </a>
+                <a href="#"><span>로켓프레시</span></a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <img src="../img/category-3.svg"  alt="로켓직구">
+                    
+                </a>
+                <a href="#"><span>로켓직구</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../img/category-4.svg"  alt="식품">
+                    
+                </a>
+                <a href="#"><span>식품</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../img/category-5.svg"   alt="주방용품">
+                    
+                </a>
+                <a href="#"><span>주방용품</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../img/category-6.svg"  alt="생활용품">
+                   
+                </a>
+                <a href="#"><span>생활용품</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../img/category-7.svg"  alt="가전디지털">
+                    
+                </a>
+                <a href="#"><span>가전디지털</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../img/category-8.svg"  alt="뷰티">
+                    
+                </a>
+                <a href="#"><span>뷰티</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../img/category-9.svg"  alt="가구/인테리어">
+                    
+                </a>
+                <a href="#"><span>가구/인테리어</span></a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="../img/category-10.svg"  alt="패션">
+                    
+                </a>
+                <a href="#"><span>패션</span></a>
+            </li>
+        </ul>
+    </div>
+    <!--연관상품추천-->
+    <div id="recommend">
+        <section id="recommend-inner" class="layout">
+            <div class="arti-style">
+                <h2>이런 상품은 어떠세요?</h2>
+            </div>
+            <div class="layout-frame">
+
+            
+                <ul class="prod-list-style" >
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/reco-1.jpg" alt="풀무원 플레인 상품이미지">
+                        
+                            <span class="text-title">풀무원 다논 그릭 요거트 달지않은 플레인, 95g, 8개</span>
+                            <span>
+                                <strong>5,480</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/reco-2.jpg" alt="그릭데이 떠먹는 요구르트 상품이미지">
+                            <span class="text-title">그릭데이 시그니처 떠먹는 요구르트, 100g, 3개</span>
+                            <span>
+                                <strong>9,870</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/reco-3.jpg" alt="일동후디스 그릭 요거트 상품이미지">
+                            <span class="text-title">일동후디스 그릭 요거트 달지않은 저지방, 450g, 2개 </span>
+                            <span>
+                                <strong>9,340</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/reco-4.jpg" alt="그릭데이 그릭요거트 상품이미지">
+                            <span class="text-title">그릭데이 그릭요커트 시그니처 800g, 1개</span>
+                            <span>
+                                <strong>18,000</strong>원
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/reco-1.jpg" alt="풀무원 플레인 상품이미지">
+                        
+                            <span class="text-title">풀무원 다논 그릭 요거트 달지않은 플레인, 95g, 8개</span>
+                            <span>
+                                <strong>5,480</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/reco-2.jpg" alt="그릭데이 떠먹는 요구르트 상품이미지">
+                            <span class="text-title">그릭데이 시그니처 떠먹는 요구르트, 100g, 3개</span>
+                            <span>
+                                <strong>9,870</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/reco-3.jpg" alt="일동후디스 그릭 요거트 상품이미지">
+                            <span class="text-title">일동후디스 그릭 요거트 달지않은 저지방, 450g, 2개 </span>
+                            <span>
+                                <strong>9,340</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/reco-4.jpg" alt="그릭데이 그릭요거트 상품이미지">
+                            <span class="text-title">그릭데이 그릭요커트 시그니처 800g, 1개</span>
+                            <span>
+                                <strong>18,000</strong>원
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+        </section>
+        <div class="arrow-main">
+            <a href="#" class="prev"><img src="../img/chevron-left.svg" alt="이전"></a>
+            <a href="#" class="next"><img src="../img/chevron-right.svg" alt="다음"></a>
+        </div>
+    </div>
+        <!--연관상품추천-모바일-->
+    <div class="all-wrap1">
+        <div class="swiper-container3">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/reco-1.jpg" alt="풀무원 요거트 상품이미지">
+                    
+                        <span class="text-title">풀무원 다논 그릭 요거트 달지않은 플레인, 95g, 8개</span>
+                        <span>
+                            <strong>5,480</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                            <i>로켓프레시</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="평점이미지">(21,672개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/reco-2.jpg" alt="그릭데이 떠먹는 요구르트 상품이미지">
+                        <span class="text-title">그릭데이 시그니처 떠먹는 요구르트, 100g, 3개</span>
+                        <span>
+                            <strong>9,870</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                            <i>로켓프레시</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/reco-3.jpg" alt="일동후디스 그릭 요거트 상품이미지">
+                        <span class="text-title">일동후디스 그릭 요거트 달지않은 저지방, 450g, 2개 </span>
+                        <span>
+                            <strong>9,340</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                            <i>로켓프레시</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/reco-4.jpg" alt="그릭데이 그릭요거트 상품이미지">
+                        <span class="text-title">그릭데이 그릭요커트 시그니처 800g, 1개</span>
+                        <span>
+                            <strong>18,000</strong>원
+                        </span>
+                        <span class="text-deliv">수요일 6/1일 도착예정</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/reco-1.jpg" alt="풀무원 플레인 상품이미지">
+                    
+                        <span class="text-title">풀무원 다논 그릭 요거트 달지않은 플레인, 95g, 8개</span>
+                        <span>
+                            <strong>5,480</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                            <i>로켓프레시</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/reco-2.jpg" alt="그릭데이 떠먹는 요구르트 상품이미지">
+                        <span class="text-title">그릭데이 시그니처 떠먹는 요구르트, 100g, 3개</span>
+                        <span>
+                            <strong>9,870</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                            <i>로켓프레시</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/reco-3.jpg" alt="일동후디스 그릭 요거트 상품이미지">
+                        <span class="text-title">일동후디스 그릭 요거트 달지않은 저지방, 450g, 2개 </span>
+                        <span>
+                            <strong>9,340</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                            <i>로켓프레시</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/reco-4.jpg" alt="그릭데이 그릭요거트 상품이미지">
+                        <span class="text-title">그릭데이 그릭요커트 시그니처 800g, 1개</span>
+                        <span>
+                            <strong>18,000</strong>원
+                        </span>
+                        <span class="text-deliv">수요일 6/1일 도착예정</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+        </div>
+    </div>
+    <!--쿠팡 핫 브랜드-->
+    <section id="hot-brand" class="layout">
+        <div class="arti-style">
+            <h2>
+                쿠팡이 엄선한 요즘 가장 핫한 브랜드!
+            </h2>
+        </div>
+        <ul>
+            <li class="bi1">
+                <a href="#"><img class="brand-img" src="../img/hot-brand-img1.jpg" alt="비비고">
+                    
+                </a>
+                
+                <img class="brandLogo-img1 bli1" src="../img/hot-brand-logo-1.png" width="90" alt="비비고로고">
+                
+            </li>
+            <li class="bi1">
+                <a href="#"><img class="brand-img" src="../img/hot-brand-img2.jpg" alt="동원참치">
+                    
+                </a>
+                
+                <img class="brandLogo-img1 bli2" src="../img/hot-brand-logo-2.png" width="150" alt="동원">
+                
+            </li>
+        </ul>
+        <ul>
+            <li class="bi2">
+                <a href="#"><img  class="brand-img" src="../img/hot-brand-img3.jpg" width="290" alt="앨지">
+                   
+                </a>
+                <img class="brandLogo-img2 bli3" src="../img/hot-brand-logo-3.png" width="150" alt="앨지로고">
+            </li>
+            <li class="bi2">
+                <a href="#"><img class="brand-img" src="../img/hot-brand-img4.jpg" width="290" alt="노브랜드">
+                    
+                </a>
+                <img class="brandLogo-img2 bli4" src="../img/hot-brand-logo-4.png" width="130" alt="노브랜드로고">
+            </li>
+            <li class="bi2">
+                <a href="#"><img class="brand-img" src="../img/hot-brand-img5.jpg" width="290" alt="스파오">
+                    
+                </a>
+                <img class="brandLogo-img2 bli5" src="../img/hot-brand-logo-5.png" width="120" alt="스파오로고">
+            </li>
+            <li class="bi2">
+                <a href="#"><img class="brand-img" src="../img/hot-brand-img6.jpg" width="290" alt="H&M">
+                    
+                </a>
+                <img class="brandLogo-img2 bli6" src="../img/hot-brand-logo-6.png" width="70" alt="H&M로고">
+            </li>
+        </ul>
+        <ul>
+            <li class="bi2">
+                <a href="#"><img class="brand-img" src="../img/hot-brand-img7.jpg" width="290" alt="닥스">
+                    
+                </a>
+                <img class="brandLogo-img2 bli7" src="../img/hot-brand-logo-7.png" width="90" alt="닥스로고">
+            </li>
+            <li class="bi2">
+                <a href="#"><img class="brand-img" src="../img/hot-brand-img8.jpg" width="290" alt="휠라">
+                    
+                
+                </a>
+                <img class="brandLogo-img2 bli8" src="../img/hot-brand-logo-8.png" width="90" alt="휠라로고">
+            </li>
+            <li class="bi1">
+                <a href="#"><img class="brand-img" src="../img/hot-brand-img9.jpg" alt="애플">
+                   
+                </a>
+                <img class="brandLogo-img1 bl9 bli9" src="../img/hot-brand-logo-9.png" width="50" alt="애플로고">
+            </li>
+        </ul>
+    </section>
+    <!--쿠팡 핫 브랜드 모바일 버전-->
+    <section id="hot-brand-m" class="layout top-margin">
+        <div class="arti-style">
+            <h2>
+                쿠팡이 엄선한 요즘 가장 핫한 브랜드!
+            </h2>
+        </div>
+        <div class="all-wrap1 hot-mobile">
+            <div class="swiper-container3">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slideH-1">
+                            <a href="#" class="brand-sc">
+                                <img class="brand-img2" src="../img/hot-brand2-img1.jpg" alt="비비고">
+                            </a>
+                            <img class="brandLogo-img bli1" src="../img/hot-brand-logo-1.png" alt="비비고로고">
+                        </div>
+                        <div class="slideH-2">
+                            
+                            <a href="#" class="brand-sc">
+                                <img class="brand-img2" src="../img/hot-brand2-img6.jpg" width="290" alt="H&M">
+                            </a>
+                            <img class="brandLogo-img bli6" src="../img/hot-brand-logo-6.png" alt="H&M로고">
+                
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slideH-1">
+                            <a href="#" class="brand-sc">
+                                <img class="brand-img2" src="../img/hot-brand2-img2.jpg" alt="동원참치">
+                            </a>
+                            <img class="brandLogo-img bli2" src="../img/hot-brand-logo-2.png" alt="동원">        
+            
+                        </div>
+                        <div class="slideH-2">
+                            <a href="#" class="brand-sc">
+                                <img class="brand-img2" src="../img/hot-brand2-img7.jpg" width="290" alt="닥스">
+                            </a>
+                            <img class="brandLogo-img bli7" src="../img/hot-brand-logo-7.png" alt="닥스로고">
+            
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slideH-1">
+                            <a href="#" class="brand-sc">
+                                <img  class="brand-img2" src="../img/hot-brand2-img3.jpg" width="290" alt="앨지">
+                            </a>
+                            <img class="brandLogo-img bli3" src="../img/hot-brand-logo-3.png" alt="앨지로고">
+            
+                        </div>
+                        <div class="slideH-2">
+                            <a href="#" class="brand-sc">
+                                <img class="brand-img2" src="../img/hot-brand2-img8.jpg" width="290" alt="휠라">
+                            
+                            </a>
+                            <img class="brandLogo-img bli8" src="../img/hot-brand-logo-8.png" alt="휠라로고">
+            
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slideH-1">
+                            <a href="#" class="brand-sc">
+                                <img class="brand-img2" src="../img/hot-brand2-img4.jpg" width="290" alt="노브랜드">
+                            </a>
+                            <img class="brandLogo-img bli4" src="../img/hot-brand-logo-4.png" alt="노브랜드로고">
+                
+                        </div>
+                        <div class="slideH-2">
+                            <a href="#" class="brand-sc">
+                                <img class="brand-img2" src="../img/hot-brand2-img9.jpg" alt="애플">
+                            </a>
+                            <img class="brandLogo-img bli9" src="../img/hot-brand-logo-9.png" alt="애플로고">
+            
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slideH-1">
+                            <a href="#" class="brand-sc">
+                                <img class="brand-img2" src="../img/hot-brand2-img5.jpg" width="290" alt="스파오">
+                            </a>
+                            <img class="brandLogo-img bli5" src="../img/hot-brand-logo-5.png" alt="스파오로고">
+                
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+                <!-- Add Pagination -->
+            </div>
+        </div>
+    </section>
+    
+    <!--특가 상품-->
+    <div id="sale-product" >
+        <section id="sale-product-inner" class="layout">
+            <div class="arti-style">
+                <h2>
+                    놓치면 후회하는 특가 상품
+                </h2>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li onclick="this.style.backgroundColor='blue'"><a href="#">전체보기</a></li>
+                    <li><a href="#">로켓배송</a></li>
+                    <li><a href="#">로켓프레시</a></li>
+                    <li><a href="#">하나 더 사은품</a></li>
+                    <li><a href="#">마감세일</a></li>
+                </ul>
+            </nav>
+            <div class="layout-frame">
+                <ul class="prod-list-style">
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img1.jpg" alt="섬유유연제 상품이미지">
+                            <span class="text-title">다우니 초고농축 섬유유연제 엑스퍼트, 1.05L, 3개</span>
+                            <span>
+                                <strong>15,970</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img2.jpg" alt="물티슈 상품이미지">
+                            <span class="text-title">베베앙 오리지널 플러스 아기물티슈 캡형,100매 10팩</span>
+                            <span>
+                                <strong>13,980</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img3.jpg" alt="마스크 상품이미지">
+                            <span class="text-title">고르고 바른 일회용 마스크 성인용 1개, 블랙, 50개입 </span>
+                            <span>
+                                <strong>7,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img4.jpg" alt="썬골드키위 상품이미지">
+                            <span class="text-title">제스프리 왕점보 썬골드키위, 왕점보, 1.5kg, 1팩</span>
+                            <span>
+                                <strong>18,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img1.jpg" alt="섬유유연제 상품이미지">
+                            <span class="text-title">다우니 초고농축 섬유유연제 엑스퍼트, 1.05L, 3개</span>
+                            <span>
+                                <strong>15,970</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img2.jpg" alt="물티슈 상품이미지">
+                            <span class="text-title">베베앙 오리지널 플러스 아기물티슈 캡형,100매 10팩</span>
+                            <span>
+                                <strong>13,980</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img3.jpg" alt="마스크 상품이미지">
+                            <span class="text-title">고르고 바른 일회용 마스크 성인용 1개, 블랙, 50개입 </span>
+                            <span>
+                                <strong>7,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img4.jpg" alt="썬골드키위 상품이미지">
+                            <span class="text-title">제스프리 왕점보 썬골드키위, 왕점보, 1.5kg, 1팩</span>
+                            <span>
+                                <strong>18,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="prod-list-style prod2">
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img5.jpg" alt="치약 상품이미지">
+                            <span class="text-title">2080 닥터크리닉 미백크리닉 치약, 120g, 4개</span>
+                            <span>
+                                <strong>15,970</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img6.jpg" alt="다리미 상품이미지">
+                            <span class="text-title">필립스 건식 다리미 GC160,  퍼플</span>
+                            <span>
+                                <strong>13,980</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img7.jpg" alt="생연어 상품이미지">
+                            <span class="text-title">한번도 얼리지 않은 항공직송 생 연어, 1.3kg, 1개 </span>
+                            <span>
+                                <strong>7,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img8.jpg" alt="육개장 상품이미지">
+                            <span class="text-title">외갓집 진심육개장 (냉동), 600g, 4개</span>
+                            <span>
+                                <strong>18,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img5.jpg" alt="치약 상품이미지">
+                            <span class="text-title">2080 닥터크리닉 미백크리닉 치약, 120g, 4개</span>
+                            <span>
+                                <strong>15,970</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img6.jpg" alt="다리미 상품이미지">
+                            <span class="text-title">필립스 건식 다리미 GC160,  퍼플</span>
+                            <span>
+                                <strong>13,980</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img7.jpg" alt="생연어 상품이미지">
+                            <span class="text-title">한번도 얼리지 않은 항공직송 생 연어, 1.3kg, 1개 </span>
+                            <span>
+                                <strong>7,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/sale-img8.jpg" alt="육개장 상품이미지">
+                            <span class="text-title">외갓집 진심육개장 (냉동), 600g, 4개</span>
+                            <span>
+                                <strong>18,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="arrow-main">
+            <a href="#" class="prev"><img src="../img/chevron-left.svg" alt="이전"></a>
+            <a href="#" class="next"><img src="../img/chevron-right.svg" alt="다음"></a>
+        </div>
+    </div>
+        <!--특가 상품 모바일 버전 태그-->
+    <div class="swiper-container-navi2">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <a href="#">전체보기</a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#">로켓배송</a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#">로켓프레시</a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#">하나 더 사은품</a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#">마감세일</a>
+            </div>
+        </div>
+        
+        <!-- Add Pagination -->
+    </div>    
+        <div class="all-wrap1">
+            <div class="swiper-container3">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-1">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img1.jpg" alt="섬유유연제 상품이미지">
+                                <span class="text-title">다우니 초고농축 섬유유연제 엑스퍼트, 1.05L, 3개</span>
+                                <span>
+                                    <strong>15,970</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                    <i style="color:#57a9d8">로켓배송</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                            </a>
+                        </div>
+                        <div class="slide-2">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img5.jpg" alt="치약 상품이미지">
+                                <span class="text-title">2080 닥터크리닉 미백크리닉 치약, 120g, 4개</span>
+                                <span>
+                                    <strong>15,970</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                    <i style="color:#57a9d8">로켓배송</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-1">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img2.jpg" alt="물티슈 상품이미지">
+                                <span class="text-title">베베앙 오리지널 플러스 아기물티슈 캡형,100매 10팩</span>
+                                <span>
+                                    <strong>13,980</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                    <i style="color:#57a9d8">로켓배송</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                            </a>
+                        </div>
+                        <div class="slide-2">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img6.jpg" alt="다리미 상품이미지">
+                                <span class="text-title">필립스 건식 다리미 GC160,  퍼플</span>
+                                <span>
+                                    <strong>13,980</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                    <i style="color:#57a9d8">로켓배송</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-1">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img3.jpg" alt="마스크 상품이미지">
+                                <span class="text-title">고르고 바른 일회용 마스크 성인용 1개, 블랙, 50개입 </span>
+                                <span>
+                                    <strong>7,900</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                    <i style="color:#57a9d8">로켓배송</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                            </a>
+                        </div>
+                        <div class="slide-2">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img7.jpg" alt="생연어 상품이미지">
+                                <span class="text-title">한번도 얼리지 않은 항공직송 생 연어, 1.3kg, 1개 </span>
+                                <span>
+                                    <strong>7,900</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                    <i>로켓프레시</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-1">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img4.jpg" alt="썬골드키위 상품이미지">
+                                <span class="text-title">제스프리 왕점보 썬골드키위, 왕점보, 1.5kg, 1팩</span>
+                                <span>
+                                    <strong>18,900</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                    <i>로켓프레시</i>
+                                </span>
+                                <span class="text-deliv">수요일 6/1일 도착예정</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                            </a>
+                        </div>
+                        <div class="slide-2">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img8.jpg" alt="육개장 상품이미지">
+                                <span class="text-title">외갓집 진심육개장 (냉동), 600g, 4개</span>
+                                <span>
+                                    <strong>18,900</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                    <i>로켓프레시</i>
+                                </span>
+                                <span class="text-deliv">수요일 6/1일 도착예정</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-1">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img1.jpg" alt="섬유유연제 상품이미지">
+                                <span class="text-title">다우니 초고농축 섬유유연제 엑스퍼트, 1.05L, 3개</span>
+                                <span>
+                                    <strong>15,970</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                    <i style="color:#57a9d8">로켓배송</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                            </a>
+                        </div>
+                        <div class="slide-2">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img5.jpg" alt="치약 상품이미지">
+                                <span class="text-title">2080 닥터크리닉 미백크리닉 치약, 120g, 4개</span>
+                                <span>
+                                    <strong>15,970</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                    <i style="color:#57a9d8">로켓배송</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-1">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img2.jpg" alt="물티슈 상품이미지">
+                                <span class="text-title">베베앙 오리지널 플러스 아기물티슈 캡형,100매 10팩</span>
+                                <span>
+                                    <strong>13,980</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                    <i style="color:#57a9d8">로켓배송</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                            </a>
+                        </div>
+                        <div class="slide-2">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img6.jpg" alt="다리미 상품이미지">
+                                <span class="text-title">필립스 건식 다리미 GC160,  퍼플</span>
+                                <span>
+                                    <strong>13,980</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                    <i style="color:#57a9d8">로켓배송</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-1">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img3.jpg" alt="마스크 상품이미지">
+                                <span class="text-title">고르고 바른 일회용 마스크 성인용 1개, 블랙, 50개입 </span>
+                                <span>
+                                    <strong>7,900</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                    <i style="color:#57a9d8">로켓배송</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                            </a>
+                        </div>
+                        <div class="slide-2">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img7.jpg" alt="생연어 상품이미지">
+                                <span class="text-title">한번도 얼리지 않은 항공직송 생 연어, 1.3kg, 1개 </span>
+                                <span>
+                                    <strong>7,900</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                    <i>로켓프레시</i>
+                                </span>
+                                <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-1">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img4.jpg" alt="썬골드키위 상품이미지">
+                                <span class="text-title">제스프리 왕점보 썬골드키위, 왕점보, 1.5kg, 1팩</span>
+                                <span>
+                                    <strong>18,900</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                    <i>로켓프레시</i>
+                                </span>
+                                <span class="text-deliv">수요일 6/1일 도착예정</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                            </a>
+                        </div>
+                        <div class="slide-2">
+                            <a href="#" class="text">
+                                <img src="../img/sale-img8.jpg" alt="육개장 상품이미지">
+                                <span class="text-title">외갓집 진심육개장 (냉동), 600g, 4개</span>
+                                <span>
+                                    <strong>18,900</strong>원
+                                    &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                    <i>로켓프레시</i>
+                                </span>
+                                <span class="text-deliv">수요일 6/1일 도착예정</span>
+                                <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add Pagination -->
+            </div>
+        </div>
+        
+    <!--리뷰 5000개-->
+    <div id="review">
+        <section id="review-inner" class="layout">
+            <div class="arti-style">
+                <h2>
+                    후기 5000개 돌파 상품!
+                </h2>
+            </div>
+            <div class="layout-frame">
+                <ul class="prod-list-style">
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/review-img1.jpg" alt="파스타소스 상품이미지">
+                        
+                            <span class="text-title">폰타나 파스타소스 ,650g, 1개</span>
+                            <span>
+                                <strong>15,970</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/review-img2.jpg" alt="치즈 너겟 상품이미지">
+                            <span class="text-title">하림 포켓몬 치즈 너겟, 420g, 1개</span>
+                            <span>
+                                <strong>13,980</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/review-img3.jpg" alt="짜파게티 상품이미지">
+                            <span class="text-title">농심 올리브 짜파게티 5입 ,700g, 1팩 </span>
+                            <span>
+                                <strong>7,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/review-img4.jpg" alt="비비고 상품이미지">
+                            <span class="text-title">비비고 왕교자 대용량 1.05kg, 1개</span>
+                            <span>
+                                <strong>18,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/review-img1.jpg" alt="파스타소스 상품이미지">
+                        
+                            <span class="text-title">폰타나 파스타소스 ,650g, 1개</span>
+                            <span>
+                                <strong>15,970</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/review-img2.jpg" alt="치즈너겟 상품이미지">
+                            <span class="text-title">하림 포켓몬 치즈 너겟, 420g, 1개</span>
+                            <span>
+                                <strong>13,980</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/review-img3.jpg" alt="짜파게티 상품이미지">
+                            <span class="text-title">농심 올리브 짜파게티 5입 ,700g, 1팩 </span>
+                            <span>
+                                <strong>7,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/review-img4.jpg" alt="비비고 상품이미지">
+                            <span class="text-title">비비고 왕교자 대용량 1.05kg, 1개</span>
+                            <span>
+                                <strong>18,900</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                                <i>로켓프레시</i>
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="arrow-main">
+            <a href="#" class="prev"><img src="../img/chevron-left.svg" alt="이전"></a>
+            <a href="#" class="next"><img src="../img/chevron-right.svg" alt="다음"></a>
+        </div>
+    </div>
+        <!--리뷰 5000개-모바일-->
+    <div class="all-wrap1">
+        <div class="swiper-container3">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/review-img1.jpg" alt="파스타소스 상품이미지">
+                    
+                        <span class="text-title">폰타나 파스타소스 ,650g, 1개</span>
+                        <span>
+                            <strong>15,970</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                            <i>로켓프레시</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/review-img2.jpg" alt="치즈 너겟 상품이미지">
+                        <span class="text-title">하림 포켓몬 치즈 너겟, 420g, 1개</span>
+                        <span>
+                            <strong>13,980</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                            <i style="color:#57a9d8">로켓배송</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/review-img3.jpg" alt="짜파게티 상품이미지">
+                        <span class="text-title">농심 올리브 짜파게티 5입 ,700g, 1팩 </span>
+                        <span>
+                            <strong>7,900</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                            <i style="color:#57a9d8">로켓배송</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/review-img4.jpg" alt="비비고 상품이미지">
+                        <span class="text-title">비비고 왕교자 대용량 1.05kg, 1개</span>
+                        <span>
+                            <strong>18,900</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                            <i>로켓프레시</i>
+                        </span>
+                        <span class="text-deliv">수요일 6/1일 도착예정</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/review-img1.jpg" alt="파스타소스 상품이미지">
+                    
+                        <span class="text-title">폰타나 파스타소스 ,650g, 1개</span>
+                        <span>
+                            <strong>15,970</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                            <i>로켓프레시</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/review-img2.jpg" alt="치즈너겟 상품이미지">
+                        <span class="text-title">하림 포켓몬 치즈 너겟, 420g, 1개</span>
+                        <span>
+                            <strong>13,980</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                            <i style="color:#57a9d8">로켓배송</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/review-img3.jpg" alt="짜파게티 상품이미지">
+                        <span class="text-title">농심 올리브 짜파게티 5입 ,700g, 1팩 </span>
+                        <span>
+                            <strong>7,900</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                            <i style="color:#57a9d8">로켓배송</i>
+                        </span>
+                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#" class="text">
+                        <img src="../img/review-img4.jpg" alt="비비고 상품이미지">
+                        <span class="text-title">비비고 왕교자 대용량 1.05kg, 1개</span>
+                        <span>
+                            <strong>18,900</strong>원
+                            &nbsp;&nbsp;<img src="../img/rocket-fresh.png" class="rocket-ic" alt="로켓프레시아이콘">
+                            <i>로켓프레시</i>
+                        </span>
+                        <span class="text-deliv">수요일 6/1일 도착예정</span>
+                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+        </div>
+    </div>
+    <!--이벤트 배너 이미지-->
+    <div id="eventBanner">
+        <div>
+            <a href="#">
+                <img class="event-d" src="../img/eventImg.jpg" alt="이벤트이미지">
+                <img class="event-m" src="../img/eventimg-m2.jpg" alt="이벤트이미지-모바일용">
+            </a>
+        </div>
+        
+    </div>
+    <!--선물-->
+    <div id="present" class="presentDesk">
+        <section class="layout present-inner">
+            <div class="arti-style">
+                <h2>
+                    특별한 날에 어떤 선물이 좋을까요?
+                </h2>
+            </div>
+            <div class="layout2 menu present-big-menu">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="../img/present-1.svg"  alt="전체">
+                            
+                        </a>
+                        <a href="#"><span>전체</span></a>
+                    </li>
+        
+                    <li>
+                        <a href="#">
+                            <img src="../img/present-2.svg"  alt="부모님/선생님">
+                            
+                        </a>
+                        <a href="#"><span>부모님/선생님</span></a>
+                    </li>
+        
+                    <li>
+                        <a href="#">
+                            <img src="../img/present-3.svg"  alt="성년의날">
+                            
+                        </a>
+                        <a href="#"><span>성년의날</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/present-4.svg"  alt="생일">
+                            
+                        </a>
+                        <a href="#"><span>생일</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/present-5.svg"  alt="집들이">
+                            
+                        </a>
+                        <a href="#"><span>집들이</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/present-6.svg"  alt="임신/출산">
+                            
+                        </a>
+                        <a href="#"><span>임신/출산</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/present-7.svg"  alt="가전디지털">
+                            
+                        </a>
+                        <a href="#"><span>아프지마요</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/present-8.svg" alt="뷰티">
+                            
+                        </a>
+                        <a href="#"><span>홈카페</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/present-9.svg"  alt="가구/인테리어">
+                            
+                        </a>
+                        <a href="#"><span>홈트레이닝</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../img/present-10.svg"  alt="패션">
+                            
+                        </a>
+                        <a href="#"><span>디지털덕후</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="layout-frame">
+                <ul class="prod-list-style">
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img1.jpg" alt="유아동용소파 상품이미지">
+                            <span class="text-title">일룸 아코 유아동용소파(버니/디노)</span>
+                            <span>
+                                <strong>99,000</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img2.jpg" alt="홍삼정 상품이미지">
+                            <span class="text-title">홍삼정 에브리타임(10ml*30포, 30일분)</span>
+                            <span>
+                                <strong>96,000</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img3.jpg" alt="퍼퓸 상품이미지">
+                            <span class="text-title">오드퍼퓸 75ml 택1 </span>
+                            <span>
+                                <strong>223,250</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img4.jpg" alt="센트룸 상품이미지">
+                            <span class="text-title">센트룸 포우먼50</span>
+                            <span>
+                                <strong>24,000</strong>원
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img1.jpg" alt="유아동용소파 상품이미지">
+                            <span class="text-title">일룸 아코 유아동용소파(버니/디노)</span>
+                            <span>
+                                <strong>99,000</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img2.jpg" alt="홍삼정 상품이미지">
+                            <span class="text-title">홍삼정 에브리타임(10ml*30포, 30일분)</span>
+                            <span>
+                                <strong>96,000</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img3.jpg" alt="퍼퓸 상품이미지">
+                            <span class="text-title">오드퍼퓸 75ml 택1 </span>
+                            <span>
+                                <strong>223,250</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img4.jpg" alt="센트룸 상품이미지">
+                            <span class="text-title">센트룸 포우먼50</span>
+                            <span>
+                                <strong>24,000</strong>원
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="prod-list-style prod2">
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img5.jpg" alt="밀크티 상품이미지">
+                            <span class="text-title">루카스나인 밀크티 30입</span>
+                            <span>
+                                <strong>13,300</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img6.jpg" alt="폼롤러 상품이미지">
+                            <span class="text-title">포지션밸런스 홈트 홈롤러 스트레칭 하드폼롤러 </span>
+                            <span>
+                                <strong>18,000</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img7.jpg" alt="애플워치 상품이미지">
+                            <span class="text-title">애플워치SE GPS 40mm 골드 스타라이트 스포츠밴드 </span>
+                            <span>
+                                <strong>346,890</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img8.jpg" alt="무드등 상품이미지">
+                            <span class="text-title">네스트에그 LED 무드등 이제 무드등도 무선충전! </span>
+                            <span>
+                                <strong>29,900</strong>원
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img5.jpg" alt="밀크티 상품이미지">
+                            <span class="text-title">루카스나인 밀크티 30입</span>
+                            <span>
+                                <strong>13,300</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img6.jpg" alt="폼롤러 상품이미지">
+                            <span class="text-title">포지션밸런스 홈트 홈롤러 스트레칭 하드폼롤러 </span>
+                            <span>
+                                <strong>18,000</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img7.jpg" alt="애플워치 상품이미지">
+                            <span class="text-title">애플워치SE GPS 40mm 골드 스타라이트 스포츠밴드 </span>
+                            <span>
+                                <strong>346,890</strong>원
+                                &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                <i style="color:#57a9d8">로켓배송</i>
+                            </span>
+                            <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text">
+                            <img src="../img/present-img8.jpg" alt="무드등 상품이미지">
+                            <span class="text-title">네스트에그 LED 무드등 이제 무드등도 무선충전! </span>
+                            <span>
+                                <strong>29,900</strong>원
+                            </span>
+                            <span class="text-deliv">수요일 6/1일 도착예정</span>
+                            <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="arrow-main">
+            <a href="#" class="prev"><img src="../img/chevron-left.svg" alt="이전"></a>
+            <a href="#" class="next"><img src="../img/chevron-right.svg" alt="다음"></a>
+        </div>
+    </div>
+        <!--선물 모바일 태그-->
+        <div id="present-m" class="top-margin">
+            <section class="layout present-inner">
+                <div class="arti-style">
+                    <h2>
+                        특별한 날에 어떤 선물이 좋을까요?
+                    </h2>
+                </div>
+                <div  class="layout2 menu present-big-menu">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="../img/present-1.svg"  alt="전체">
+                                
+                            </a>
+                            <a href="#"><span>전체</span></a>
+                        </li>
+            
+                        <li>
+                            <a href="#">
+                                <img src="../img/present-2.svg"  alt="부모님/선생님">
+                                
+                            </a>
+                            <a href="#"><span>부모님/선생님</span></a>
+                        </li>
+            
+                        <li>
+                            <a href="#">
+                                <img src="../img/present-3.svg"  alt="성년의날">
+                                
+                            </a>
+                            <a href="#"><span>성년의날</span></a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="../img/present-4.svg"  alt="생일">
+                                
+                            </a>
+                            <a href="#"><span>생일</span></a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="../img/present-5.svg"  alt="집들이">
+                                
+                            </a>
+                            <a href="#"><span>집들이</span></a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="../img/present-6.svg"  alt="임신/출산">
+                                
+                            </a>
+                            <a href="#"><span>임신/출산</span></a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="../img/present-7.svg"  alt="가전디지털">
+                                
+                            </a>
+                            <a href="#"><span>아프지마요</span></a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="../img/present-8.svg" alt="뷰티">
+                                
+                            </a>
+                            <a href="#"><span>홈카페</span></a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="../img/present-9.svg"  alt="가구/인테리어">
+                                
+                            </a>
+                            <a href="#"><span>홈트레이닝</span></a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="../img/present-10.svg"  alt="패션">
+                                
+                            </a>
+                            <a href="#"><span>디지털덕후</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="all-wrap1">
+                    <div class="swiper-container3">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="slide-1">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img1.jpg" alt="유아동용소파 상품이미지">
+                                        <span class="text-title">일룸 아코 유아동용소파(버니/디노)</span>
+                                        <span>
+                                            <strong>99,000</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                                    </a>
+                                </div>
+                                <div class="slide-2">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img5.jpg" alt="밀크티 상품이미지">
+                                        <span class="text-title">루카스나인 밀크티 30입</span>
+                                        <span>
+                                            <strong>13,300</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-1">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img2.jpg" alt="홍삼정 상품이미지">
+                                        <span class="text-title">홍삼정 에브리타임(10ml*30포, 30일분)</span>
+                                        <span>
+                                            <strong>96,000</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                                    </a>
+                                </div>
+                                <div class="slide-2">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img6.jpg" alt="폼롤러 상품이미지">
+                                        <span class="text-title">포지션밸런스 홈트 홈롤러 스트레칭 하드폼롤러 </span>
+                                        <span>
+                                            <strong>18,000</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-1">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img3.jpg" alt="퍼퓸 상품이미지">
+                                        <span class="text-title">오드퍼퓸 75ml 택1 </span>
+                                        <span>
+                                            <strong>223,250</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                                    </a>
+                                </div>
+                                <div class="slide-2">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img7.jpg" alt="애플워치 상품이미지">
+                                        <span class="text-title">애플워치SE GPS 40mm 골드 스타라이트 스포츠밴드 </span>
+                                        <span>
+                                            <strong>346,890</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-1">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img4.jpg" alt="센트룸 상품이미지">
+                                        <span class="text-title">센트룸 포우먼50</span>
+                                        <span>
+                                            <strong>24,000</strong>원
+                                        </span>
+                                        <span class="text-deliv">수요일 6/1일 도착예정</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                                    </a>
+                                </div>
+                                <div class="slide-2">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img8.jpg" alt="무드등 상품이미지">
+                                        <span class="text-title">네스트에그 LED 무드등 이제 무드등도 무선충전! </span>
+                                        <span>
+                                            <strong>29,900</strong>원
+                                        </span>
+                                        <span class="text-deliv">수요일 6/1일 도착예정</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-1">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img1.jpg" alt="유아동용소파 상품이미지">
+                                        <span class="text-title">일룸 아코 유아동용소파(버니/디노)</span>
+                                        <span>
+                                            <strong>99,000</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                                    </a>
+                                </div>
+                                <div class="slide-2">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img5.jpg" alt="밀크티 상품이미지">
+                                        <span class="text-title">루카스나인 밀크티 30입</span>
+                                        <span>
+                                            <strong>13,300</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(21,672개)</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-1">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img2.jpg" alt="홍삼정 상품이미지">
+                                        <span class="text-title">홍삼정 에브리타임(10ml*30포, 30일분)</span>
+                                        <span>
+                                            <strong>96,000</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                                    </a>
+                                </div>
+                                <div class="slide-2">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img6.jpg" alt="폼롤러 상품이미지">
+                                        <span class="text-title">포지션밸런스 홈트 홈롤러 스트레칭 하드폼롤러 </span>
+                                        <span>
+                                            <strong>18,000</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(13,891개)</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-1">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img3.jpg" alt="퍼퓸 상품이미지">
+                                        <span class="text-title">오드퍼퓸 75ml 택1 </span>
+                                        <span>
+                                            <strong>223,250</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                                    </a>
+                                </div>
+                                <div class="slide-2">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img7.jpg" alt="애플워치 상품이미지">
+                                        <span class="text-title">애플워치SE GPS 40mm 골드 스타라이트 스포츠밴드 </span>
+                                        <span>
+                                            <strong>346,890</strong>원
+                                            &nbsp;&nbsp;<img src="../img/rocket.png" class="rocket-ic" alt="로켓배송아이콘">
+                                            <i style="color:#57a9d8">로켓배송</i>
+                                        </span>
+                                        <span class="text-deliv">내일(토) 새벽 도착 보장</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-1">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img4.jpg" alt="센트룸 상품이미지">
+                                        <span class="text-title">센트룸 포우먼50</span>
+                                        <span>
+                                            <strong>24,000</strong>원
+                                        </span>
+                                        <span class="text-deliv">수요일 6/1일 도착예정</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                                    </a>
+                                </div>
+                                <div class="slide-2">
+                                    <a href="#" class="text">
+                                        <img src="../img/present-img8.jpg" alt="무드등 상품이미지">
+                                        <span class="text-title">네스트에그 LED 무드등 이제 무드등도 무선충전! </span>
+                                        <span>
+                                            <strong>29,900</strong>원
+                                        </span>
+                                        <span class="text-deliv">수요일 6/1일 도착예정</span>
+                                        <span><img src="../img/star.jpg" alt="별이미지(평점)">(35,571개)</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Add Pagination -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    <!--기획전과 쿠팡only-->
+    <section id="body-bottom" class="layout">
+        <div id="body-bottom-left">
+            <div class="arti-style2">
+                <h2>
+                    기획전
+                </h2>
+            </div>
+            <a href="#">
+                <img src="../img/Exhibitions-img.jpg" alt="기획전사진">
+            </a>
+        </div>
+
+        <div id="body-bottom-right">
+            <div class="arti-style2">
+                <h2>
+                    쿠팡 ONLY
+                </h2>
+            </div>
+            <a href="#">
+                <img src="../img/coupang-img.jpg" alt="쿠팡플레이사진">
+            </a>
+        </div>
+    </section>
+    <!--푸터-->
+    <footer>
+        <div id="footer-inner">
+            <ul id="footer-left">
+                <li class="f-call">
+                
+                        <h3>
+                            1644-7202
+                        </h3>
+                        <p>
+                            365고객센터<br>
+                            오전 7시 - 오후 7시
+                        </p>
+                        
+                    
+                </li>
+                <li class="f-kakao">
+                    
+                        <h3>
+                            카카오톡 문의
+                        </h3>
+                        <p>
+                            365고객센터<br>
+                            오전 7시 - 오후 7시
+                        </p>
+                    
+                </li>
+                <li class="f-qna">
+                    
+                        <h3>
+                            1:1 문의
+                        </h3>
+                        <p>
+                            24시간 접수가능<br>
+                            고객센터 운영시간에 순차적으로 답변해드리겠습니다.
+                        </p>
+                        
+                  
+                </li>
+                <li class="f-bulkorder">
+                  
+                        <h3>
+                            대량주문 문의
+                        </h3>
+                        <p>
+                            비회원의 경우 메일로 문의 바랍니다. 
+                        </p>
+                  
+                </li>
+
+            </ul>
+
+            <div id="footer-center">
+                <ul class="footer-m-top">
+                    <li>쿠팡소개</li>
+                    <li>쿠팡소개영상</li>
+                    <li>인재채용</li>
+                    <li>이용약관</li>
+                    <li>개인정보방침</li>
+                    <li>이용안내</li>
+                    <li>문의</li>
+                </ul>
+                <p class="footer-p">
+                    상호명 및 호스팅 서비스 제공 : 쿠팡(주)<br>
+                    대표이사 : 강현승, 박대준<br>
+                    서울시 송파구 송파대로 570<br>
+                    사업자 등록번호 : 20-88-00767<br>
+                    통신판매업신고 : 2017-서울송파-0680<br>
+                    사업자정보 확인 >
+                </p>
+                <div class="footer-div-m">
+                    <p>1644-7202</p>
+                    
+                    상호명 및 호스팅 서비스 제공 : 쿠팡(주)<br>
+                    대표이사 : 강현승, 박대준<br>
+                    서울시 송파구 송파대로 570<br>
+                    사업자 등록번호 : 20-88-00767<br>
+                    통신판매업신고 : 2017-서울송파-0680<br>
+                    사업자정보 확인 >
+                </div>
+            </div>
+            <div id="footer-right">
+                <img src="../img/logo.png" alt="로고이미지">
+            </div>
+        </div>
+    </footer>
+    <script>
+        var swiper = new Swiper('.swiper-container3', {
+            pagination: '.swiper-pagination',
+            slidesPerView: 3,
+            paginationClickable: true,
+            spaceBetween:20,
+            freeMode: true,
+            speed:600,
+            breakpoints: {
+            '1279': {
+            slidesPerView: 4,
+            spaceBetween: 20,
+            },
+            '810': {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            },
+            '530': {
+            slidesPerView: 2,
+            spaceBetween: 20,
+            },
+        }
+        });//플러그인
+    </script>
+    <script>
+        var swiper = new Swiper('.swiper-container-navi', {
+            pagination: '.swiper-pagination',
+            slidesPerView: 4,
+            paginationClickable: true,
+            spaceBetween:10,
+            freeMode: true,
+            speed:560,
+            breakpoints: {
+            '1197': {
+            slidesPerView: 8,
+            spaceBetween: 10,
+            },
+            '935': {
+            slidesPerView: 7,
+            spaceBetween: 10,
+            },
+            '811': {
+            slidesPerView: 6,
+            spaceBetween: 10,
+            },
+            '650': {
+            slidesPerView: 6,
+            spaceBetween: 10,
+            },
+            '620': {
+            slidesPerView: 5,
+            spaceBetween: 10,
+            },
+            '520': {
+            slidesPerView: 4,
+            spaceBetween: 10,
+            },
+            '410': {
+            slidesPerView: 3.5,
+            spaceBetween: 10,
+            },
+            '353': {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            },
+        }
+        });//플러그인
+    </script>
+    <script>
+        var swiper = new Swiper('.swiper-container-navi2', {
+            pagination: '.swiper-pagination',
+            slidesPerView : 3, 
+            paginationClickable: true,
+            spaceBetween:5,
+            freeMode: true,
+            breakpoints: {
+            '1279': {
+            slidesPerView: 5,
+            spaceBetween: 10,
+            },
+            '776': {
+            slidesPerView: 4,
+            spaceBetween: 10,
+            },
+            '482': {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            },
+        }
+        });//플러그인
+    </script>
+</body>
+</html>
