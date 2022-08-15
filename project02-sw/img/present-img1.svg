@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 91 91" style="enable-background:new 0 0 91 91;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_2_);fill:#EBEBEB;}
+	.st1{clip-path:url(#SVGID_2_);fill:#CD9E66;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st2{clip-path:url(#SVGID_2_);fill:#E6B87C;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+	
+		.st3{clip-path:url(#SVGID_2_);fill:#EFD9AB;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{clip-path:url(#SVGID_2_);fill:#47BCC6;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.st5{clip-path:url(#SVGID_2_);fill:#ABDDF5;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.st6{clip-path:url(#SVGID_2_);fill:#64C5DA;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.st7{clip-path:url(#SVGID_2_);fill:#64C5DA;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="0" y="0" width="91" height="91"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<rect class="st0" width="91" height="91"/>
+	<polygon class="st1" points="-2.59,92.37 44.91,105.99 44.91,66.15 -2.59,49.32 	"/>
+	<polygon class="st2" points="44.91,105.99 92.41,90.51 92.41,49.58 44.91,66.15 	"/>
+	<polygon class="st3" points="-2.59,49.41 44.91,30.58 92.41,49.66 44.91,66.23 	"/>
+	<polygon class="st4" points="16.39,56.13 17,97.52 31.55,101.86 31.55,60.94 	"/>
+	<path class="st5" d="M49,44.29c0,0,6.08-11.57,12.62-11.32c6.53,0.26,13.63,5.66,13.63,5.66s-3.92,9.36-17.25,9.77"/>
+	<polyline class="st6" points="60.25,60.88 60.25,100.46 73.88,96.46 73.88,56.13 	"/>
+	<polygon class="st5" points="17,41.73 60.25,60.88 73.88,56.13 30.09,36.54 	"/>
+	<path class="st5" d="M32.57,49.27c0,0-20.74-0.51-18.96,8.94l12.57,5.04c0,0,7.03,4.07,20.9-8.06
+		C47.09,55.18,46.81,46.89,32.57,49.27z"/>
+	<path class="st7" d="M56.9,48.4c0,0,11.92,0.74,18.34-9.77C75.24,38.63,69.83,33.95,56.9,48.4z"/>
+	<path class="st5" d="M32,49.04c0,0,6.19-8.66,15.64-5.94c4.72,1.36,7.45,2.9,8.99,4.11c1.54,1.2,1.91,2.06,1.91,2.06l-11.24,5.88
+		C47.29,55.15,41.19,47.76,32,49.04z"/>
+	<path class="st6" d="M47.29,55.15c0,0-16.18,0.03-17.97,6.59s10.95-1.46,10.95-1.46L47.29,55.15z"/>
+</g>
+</svg>
